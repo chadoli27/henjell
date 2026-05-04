@@ -551,12 +551,44 @@ h3 {
   font-size: 0.97rem;
 }
 
+/* ── 오시는 길 ── */
+.location {
+  text-align: center;
+}
+
+.location-map {
+  width: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-warm);
+  margin-top: 24px;
+}
+
+.location-map iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.map-link:hover {
+  text-decoration: underline;
+}
+
 /* ── 상담 ── */
 .contact {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  text-align: center;
   background: linear-gradient(135deg, #5a3210 0%, #7a4a18 100%);
   color: white;
 }
@@ -569,24 +601,30 @@ h3 {
   color: rgba(255, 255, 255, 0.72);
 }
 
-.contact > div {
-  width: min(720px, 100%);
-}
-
 .contact h2 {
   margin-top: 12px;
 }
 
-.contact .primary-action {
-  flex: 0 0 auto;
-  background: var(--yellow);
-  color: #2d1a05;
-  font-weight: 700;
-  box-shadow: 0 4px 20px rgba(255, 212, 90, 0.34);
+.contact .section-heading {
+  width: min(720px, 100%);
 }
 
-.contact .primary-action:hover {
-  background: #ffe071;
+.kakao-btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 18px 40px;
+  background: #FEE500;
+  color: #191919;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-btn);
+  box-shadow: 0 4px 20px rgba(254, 229, 0, 0.4);
+  transition: background 0.18s, transform 0.18s;
+  text-align: center;
+}
+
+.kakao-btn:hover {
+  background: #ffe033;
   transform: translateY(-2px);
 }
 
@@ -657,11 +695,11 @@ h3 {
     grid-template-columns: 68px minmax(0, 1fr);
   }
 
-  .contact {
-    display: grid;
+  .kakao-btn {
+    width: 100%;
   }
 
-  .contact .primary-action {
-    width: 100%;
+  .location-map iframe {
+    height: 300px;
   }
 }
