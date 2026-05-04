@@ -880,19 +880,43 @@ h3 {
   display: block;
   width: 100%;
   height: 450px;
+  border: 0;
+}
+
+.map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .map-link {
-  display: inline-block;
-  margin-top: 16px;
-  color: var(--blue);
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  background: var(--blue);
+  box-shadow: var(--shadow-warm);
+  color: white;
+  font-weight: 700;
   text-decoration: none;
   font-size: 0.95rem;
+  transition: background 0.18s, color 0.18s, transform 0.18s;
+}
+
+.map-link--secondary {
+  border: 1px solid rgba(192, 122, 16, 0.26);
+  background: white;
+  color: var(--blue-dark);
 }
 
 .map-link:hover {
-  text-decoration: underline;
+  color: white;
+  background: var(--blue-dark);
+  transform: translateY(-2px);
 }
 
 /* ── 상담 ── */
@@ -1195,5 +1219,9 @@ h3 {
 
   .location-map iframe {
     height: 300px;
+  }
+
+  .map-link {
+    width: 100%;
   }
 }
