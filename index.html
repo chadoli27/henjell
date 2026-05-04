@@ -431,19 +431,172 @@
         <div class="section-heading">
           <p class="eyebrow">Contact</p>
           <h2>상담 신청</h2>
-          <p>입소에 대해 궁금한 점이 있으시면 카카오 오픈채팅 또는 전화로 편하게 문의해 주세요. 빠르게 답변드리겠습니다.</p>
+          <p>입소 상담 신청서를 작성해 주시면 확인 후 빠르게 연락드리겠습니다.</p>
         </div>
-        <div class="contact-actions" aria-label="상담 문의 방법">
-          <a
-            class="kakao-btn"
-            href="https://open.kakao.com/o/sTxWiJ1h"
-            target="_blank"
-            rel="noopener noreferrer"
-          >카카오 오픈채팅 상담</a>
-          <a class="phone-btn" href="tel:031-798-4234">전화 상담 031-798-4234</a>
+        <div class="contact-panel">
+          <form class="contact-form" data-contact-form data-recipient-email="chadoli28@naver.com">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="parent-name">보호자 성함</label>
+                <input id="parent-name" name="parentName" type="text" autocomplete="name" required>
+              </div>
+              <div class="form-field">
+                <label for="phone-number">연락처</label>
+                <input id="phone-number" name="phoneNumber" type="tel" autocomplete="tel" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email-address">이메일</label>
+                <input id="email-address" name="email" type="email" autocomplete="email" placeholder="답장 받을 이메일">
+              </div>
+              <div class="form-field">
+                <label for="child-age">아이 연령</label>
+                <select id="child-age" name="childAge" required>
+                  <option value="">선택해 주세요</option>
+                  <option value="만 0세">만 0세</option>
+                  <option value="만 1세">만 1세</option>
+                  <option value="만 2세">만 2세</option>
+                  <option value="만 3세">만 3세</option>
+                  <option value="만 4세">만 4세</option>
+                  <option value="만 5세">만 5세</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="preferred-time">희망 상담 시간</label>
+              <input id="preferred-time" name="preferredTime" type="text" placeholder="예: 평일 오후 3시">
+            </div>
+
+            <div class="form-field">
+              <label for="message">문의 내용</label>
+              <textarea id="message" name="message" rows="5" placeholder="궁금한 점이나 방문 희망 일정을 적어주세요." required></textarea>
+            </div>
+
+            <button class="contact-submit" type="submit">문의 완료</button>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+          </form>
+
+          <div class="contact-direct" aria-label="상담 문의 방법">
+            <h3>바로 문의하기</h3>
+            <p>카카오 오픈채팅이나 전화 상담도 가능합니다.</p>
+            <div class="contact-actions">
+              <a
+                class="kakao-btn"
+                href="https://open.kakao.com/o/sTxWiJ1h"
+                target="_blank"
+                rel="noopener noreferrer"
+              >카카오 오픈채팅 상담</a>
+              <a class="phone-btn" href="tel:031-798-4234">전화 상담 031-798-4234</a>
+            </div>
+          </div>
         </div>
       </section>
 
     </main>
+    <script>
+      const contactForm = document.querySelector("[data-contact-form]");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const status = contactForm.querySelector("[data-form-status]");
+          const recipientEmail = contactForm.dataset.recipientEmail;
+          const submitButton = contactForm.querySelector(".contact-submit");
+
+          if (!recipientEmail || recipientEmail.includes("YOUR_EMAIL_HERE")) {
+            status.textContent = "수신 이메일 주소를 먼저 설정해 주세요.";
+            status.classList.add("is-error");
+            return;
+          }
+
+          if (window.location.protocol === "file:") {
+            status.textContent = "이메일 발송은 웹서버 주소에서만 가능합니다. http://localhost 또는 배포된 사이트에서 다시 시도해 주세요.";
+            status.classList.add("is-error");
+            return;
+          }
+
+          const formData = new FormData(contactForm);
+          const parentName = formData.get("parentName").trim();
+          const phoneNumber = formData.get("phoneNumber").trim();
+          const email = formData.get("email").trim();
+          const childAge = formData.get("childAge").trim();
+          const preferredTime = formData.get("preferredTime").trim() || "미기재";
+          const message = formData.get("message").trim();
+          const honey = formData.get("_honey").trim();
+          const payload = {
+            "보호자 성함": parentName,
+            "연락처": phoneNumber,
+            "보호자 이메일": email || "미기재",
+            "아이 연령": childAge,
+            "희망 상담 시간": preferredTime,
+            "문의 내용": message,
+            _subject: `[입소 상담 신청] ${parentName}님 문의`,
+            _template: formData.get("_template"),
+            _captcha: formData.get("_captcha"),
+            _honey: honey,
+          };
+
+          if (email) {
+            payload.email = email;
+            payload._replyto = email;
+          }
+
+          if (honey) {
+            contactForm.reset();
+            return;
+          }
+
+          status.classList.remove("is-error");
+          status.textContent = "문의 내용을 전송하고 있습니다.";
+          submitButton.disabled = true;
+
+          fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(payload),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Form submission failed");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data.success === false) {
+                throw new Error(data.message || "Form submission failed");
+              }
+
+              contactForm.reset();
+              status.textContent = "문의가 접수되었습니다. 확인 후 연락드리겠습니다.";
+            })
+            .catch((error) => {
+              const message = error.message || "";
+
+              if (message.includes("web server") || message.includes("HTML files")) {
+                status.textContent = "이메일 발송은 웹서버 주소에서만 가능합니다. http://localhost 또는 배포된 사이트에서 다시 시도해 주세요.";
+              } else if (message.includes("Activation") || message.includes("Activate Form")) {
+                status.textContent = "수신 이메일로 발송된 FormSubmit 인증 메일의 Activate Form 링크를 먼저 눌러주세요.";
+              } else {
+                status.textContent = "전송 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.";
+              }
+
+              status.classList.add("is-error");
+            })
+            .finally(() => {
+              submitButton.disabled = false;
+            });
+        });
+      }
+    </script>
   </body>
 </html>
