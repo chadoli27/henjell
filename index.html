@@ -9,6 +9,10 @@
       content="경기도 광주 헨젤과 그레텔 어린이집. 통학버스 운영, 텃밭 체험, 스프링쿨러 완비. 따뜻한 돌봄으로 아이와 부모님 모두가 안심하는 어린이집입니다."
     >
     <link rel="stylesheet" href="styles.css">
+    <script>
+      // Replace with your GA4 Measurement ID, e.g. "G-ABCD1234".
+      window.HENJELL_ANALYTICS_ID = "G-EFJY3LLH96";
+    </script>
   </head>
   <body>
     <header class="site-header" aria-label="상단 메뉴">
@@ -506,6 +510,70 @@
 
     </main>
     <script>
+      const ANALYTICS_ID = window.HENJELL_ANALYTICS_ID;
+      const analyticsReady =
+        typeof ANALYTICS_ID === "string" &&
+        ANALYTICS_ID.trim() &&
+        !ANALYTICS_ID.includes("XXXXXXXX");
+
+      if (analyticsReady) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag() {
+          window.dataLayer.push(arguments);
+        };
+
+        const gtagScript = document.createElement("script");
+        gtagScript.async = true;
+        gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(ANALYTICS_ID)}`;
+        document.head.appendChild(gtagScript);
+
+        window.gtag("js", new Date());
+        window.gtag("config", ANALYTICS_ID, {
+          page_title: document.title,
+          page_location: window.location.href,
+        });
+      }
+
+      const trackEvent = (eventName, params = {}) => {
+        if (typeof window.gtag !== "function") {
+          return;
+        }
+
+        window.gtag("event", eventName, {
+          page_path: window.location.pathname,
+          ...params,
+        });
+      };
+
+      const getClickSection = (element) => {
+        const section = element.closest("section, header, main");
+        return section?.id || section?.className?.toString().split(" ")[0] || "unknown";
+      };
+
+      document.addEventListener("click", (event) => {
+        const target = event.target instanceof Element ? event.target.closest("a, button") : null;
+
+        if (!target) {
+          return;
+        }
+
+        const href = target.tagName === "A" ? target.getAttribute("href") || "" : "";
+        const clickType = href.startsWith("tel:")
+          ? "phone"
+          : href.startsWith("#")
+            ? "anchor"
+            : target.tagName === "A" && target.hostname && target.hostname !== window.location.hostname
+              ? "external"
+              : "button";
+
+        trackEvent("site_click", {
+          click_text: target.textContent.trim().replace(/\s+/g, " ").slice(0, 100),
+          click_type: clickType,
+          click_url: href.slice(0, 200),
+          click_section: getClickSection(target),
+        });
+      });
+
       const contactForm = document.querySelector("[data-contact-form]");
 
       if (contactForm) {
@@ -517,12 +585,14 @@
           const submitButton = contactForm.querySelector(".contact-submit");
 
           if (!recipientEmail || recipientEmail.includes("YOUR_EMAIL_HERE")) {
+            trackEvent("contact_form_blocked", { reason: "missing_recipient" });
             status.textContent = "수신 이메일 주소를 먼저 설정해 주세요.";
             status.classList.add("is-error");
             return;
           }
 
           if (window.location.protocol === "file:") {
+            trackEvent("contact_form_blocked", { reason: "file_protocol" });
             status.textContent = "이메일 발송은 웹서버 주소에서만 가능합니다. http://localhost 또는 배포된 사이트에서 다시 시도해 주세요.";
             status.classList.add("is-error");
             return;
@@ -555,9 +625,16 @@
           }
 
           if (honey) {
+            trackEvent("contact_form_blocked", { reason: "honeypot" });
             contactForm.reset();
             return;
           }
+
+          trackEvent("contact_form_submit", {
+            has_email: Boolean(email),
+            has_preferred_time: Boolean(formData.get("preferredTime").trim()),
+            message_length: message.length,
+          });
 
           status.classList.remove("is-error");
           status.textContent = "문의 내용을 전송하고 있습니다.";
@@ -583,19 +660,24 @@
               }
 
               contactForm.reset();
+              trackEvent("contact_form_success");
               status.textContent = "문의가 접수되었습니다. 확인 후 연락드리겠습니다.";
             })
             .catch((error) => {
               const message = error.message || "";
+              let errorReason = "submission_failed";
 
               if (message.includes("web server") || message.includes("HTML files")) {
+                errorReason = "web_server_required";
                 status.textContent = "이메일 발송은 웹서버 주소에서만 가능합니다. http://localhost 또는 배포된 사이트에서 다시 시도해 주세요.";
               } else if (message.includes("Activation") || message.includes("Activate Form")) {
+                errorReason = "activation_required";
                 status.textContent = "수신 이메일로 발송된 FormSubmit 인증 메일의 Activate Form 링크를 먼저 눌러주세요.";
               } else {
                 status.textContent = "전송 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.";
               }
 
+              trackEvent("contact_form_error", { reason: errorReason });
               status.classList.add("is-error");
             })
             .finally(() => {
