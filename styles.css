@@ -514,7 +514,17 @@ h3 {
   transform: translateY(-4px);
 }
 
+.program-card--clickable {
+  cursor: pointer;
+}
+
+.program-card--clickable:focus-visible {
+  outline: 3px solid rgba(192, 122, 16, 0.34);
+  outline-offset: 4px;
+}
+
 .program-img {
+  position: relative;
   overflow: hidden;
   border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
@@ -526,6 +536,26 @@ h3 {
   transition: transform 0.38s ease;
 }
 
+.program-gallery-badge {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  margin: 0;
+  padding: 7px 12px;
+  border-radius: var(--radius-btn);
+  color: white;
+  background: rgba(45, 36, 24, 0.78);
+  box-shadow: 0 4px 16px rgba(25, 15, 5, 0.18);
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  backdrop-filter: blur(4px);
+}
+
 .program-grid article:hover .program-img img {
   transform: scale(1.05);
 }
@@ -535,13 +565,139 @@ h3 {
   padding: 0 22px;
 }
 
-.program-grid span {
+.program-grid article > span {
   display: inline-block;
   margin: 18px 22px 10px;
   color: var(--blue);
   font-weight: 800;
   font-size: 1.05rem;
   letter-spacing: 0.04em;
+}
+
+.is-gallery-open {
+  overflow: hidden;
+}
+
+.gallery-modal[hidden] {
+  display: none;
+}
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 40px);
+}
+
+.gallery-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(45, 36, 24, 0.72);
+  cursor: pointer;
+}
+
+.gallery-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 100%);
+  max-height: min(760px, 90svh);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fffdf7;
+  box-shadow: 0 24px 80px rgba(25, 15, 5, 0.34);
+}
+
+.gallery-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px clamp(18px, 3vw, 28px);
+  border-bottom: 1px solid var(--line);
+}
+
+.gallery-top h2 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  line-height: 1.35;
+}
+
+.gallery-close,
+.gallery-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-warm);
+  cursor: pointer;
+  transition: background 0.18s, transform 0.18s;
+}
+
+.gallery-close {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.gallery-stage {
+  position: relative;
+  min-height: 0;
+  background: #24190d;
+}
+
+.gallery-stage img {
+  width: 100%;
+  height: min(64svh, 620px);
+  object-fit: contain;
+  background: #24190d;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  width: clamp(42px, 5vw, 56px);
+  height: clamp(42px, 5vw, 56px);
+  border-radius: 50%;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.gallery-arrow--prev {
+  left: clamp(10px, 2vw, 22px);
+}
+
+.gallery-arrow--next {
+  right: clamp(10px, 2vw, 22px);
+}
+
+.gallery-close:hover,
+.gallery-arrow:hover {
+  background: white;
+}
+
+.gallery-arrow:hover {
+  transform: translateY(-50%) scale(1.04);
+}
+
+.gallery-count {
+  min-height: 42px;
+  margin: 0;
+  padding: 10px 18px 14px;
+  color: var(--muted);
+  font-weight: 700;
+  text-align: center;
 }
 
 /* ── 포토 브레이크 ── */
@@ -718,16 +874,18 @@ h3 {
 
 .teachers-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 20px;
+  width: min(940px, 100%);
+  margin: 0 auto;
 }
 
 .teacher-card {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 18px;
+  flex-direction: row;
+  align-items: stretch;
+  text-align: left;
+  gap: clamp(22px, 4vw, 36px);
   padding: clamp(28px, 3vw, 40px) clamp(20px, 2.4vw, 32px);
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid rgba(199, 131, 20, 0.14);
@@ -741,12 +899,27 @@ h3 {
   transform: translateY(-3px);
 }
 
-.teacher-avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--yellow) 0%, var(--blue) 100%);
+.teacher-photo {
+  width: clamp(190px, 27vw, 280px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: calc(var(--radius-card) - 4px);
   flex-shrink: 0;
+  box-shadow: 0 14px 34px rgba(76, 49, 14, 0.18);
+}
+
+.teacher-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.teacher-kicker {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 
 .teacher-info h3 {
@@ -762,51 +935,43 @@ h3 {
   line-height: 1.6;
 }
 
-/* ── 학부모 후기 ── */
-.reviews {
-  background: white;
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.review-card {
-  margin: 0;
-  padding: clamp(26px, 2.8vw, 36px);
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-warm);
-  transition: box-shadow 0.22s, transform 0.22s;
-}
-
-.review-card:hover {
-  box-shadow: var(--shadow-warm-lg);
-  transform: translateY(-3px);
-}
-
-.review-stars {
-  margin-bottom: 14px;
-  color: var(--blue);
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-}
-
-.review-card p {
-  margin: 0 0 16px;
+.teacher-message {
+  margin: 18px 0 0;
   color: var(--ink);
-  font-size: 0.97rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
-.review-card cite {
-  font-style: normal;
+.teacher-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teacher-highlights li {
+  min-width: 0;
+  padding: 14px 12px;
+  border: 1px solid rgba(199, 131, 20, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 248, 228, 0.72);
+}
+
+.teacher-highlights strong {
+  display: block;
+  color: var(--blue-dark);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.teacher-highlights span {
+  display: block;
+  margin-top: 4px;
   color: var(--muted);
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 /* ── 모집 안내 ── */
@@ -818,7 +983,7 @@ h3 {
 
 .recruit-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(320px, 1.65fr) repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -830,9 +995,44 @@ h3 {
   box-shadow: var(--shadow-warm);
 }
 
+.recruit-item--ages {
+  grid-column: auto;
+}
+
 .recruit-item h3 {
   color: var(--blue-dark);
   margin-bottom: 14px;
+}
+
+.age-class-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.age-class {
+  min-width: 0;
+  padding: 14px 12px;
+  border: 1px solid rgba(47, 120, 200, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 253, 247, 0.82);
+  text-align: center;
+}
+
+.age-class strong {
+  display: block;
+  color: var(--blue-dark);
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+.age-class span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .recruit-item ul {
@@ -857,6 +1057,13 @@ h3 {
   left: 0;
   color: var(--blue);
   font-weight: 700;
+}
+
+.recruit-item a {
+  color: var(--blue-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ── 오시는 길 ── */
@@ -1132,10 +1339,12 @@ h3 {
   .features-grid,
   .space-gallery,
   .program-grid,
-  .reviews-grid,
-  .recruit-grid,
-  .teachers-grid {
+  .recruit-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recruit-item--ages {
+    grid-column: 1 / -1;
   }
 
   .safety-row {
@@ -1184,10 +1393,27 @@ h3 {
   .features-grid,
   .space-gallery,
   .program-grid,
-  .reviews-grid,
-  .recruit-grid,
-  .teachers-grid {
+  .recruit-grid {
     grid-template-columns: 1fr;
+  }
+
+  .age-class-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .teacher-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .teacher-photo {
+    width: min(100%, 280px);
+    margin: 0 auto;
+  }
+
+  .teacher-highlights {
+    grid-template-columns: 1fr;
+    text-align: left;
   }
 
   .safety-row {

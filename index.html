@@ -8,6 +8,7 @@
       name="description"
       content="경기도 광주 헨젤과 그레텔 어린이집. 통학버스 운영, 텃밭 체험, 스프링쿨러 완비. 따뜻한 돌봄으로 아이와 부모님 모두가 안심하는 어린이집입니다."
     >
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <script>
       // Replace with your GA4 Measurement ID, e.g. "G-ABCD1234".
@@ -21,7 +22,6 @@
         <a href="#program">교육프로그램</a>
         <a href="#space">시설·안전</a>
         <a href="#teachers">교사 소개</a>
-        <a href="#reviews">학부모 후기</a>
         <a href="#recruit">모집 안내</a>
         <a href="#contact">상담</a>
       </nav>
@@ -68,7 +68,7 @@
           </div>
           <div>
             <strong>텃밭 자연 체험</strong>
-            <span>직접 심고 키우는 감자·상추 체험</span>
+            <span>직접 심고 키우는 감자·무 체험</span>
           </div>
           <div>
             <strong>스프링쿨러 완비</strong>
@@ -96,50 +96,124 @@
           </p>
         </div>
         <div class="program-grid">
-          <article>
+          <article
+            class="program-card program-card--clickable"
+            role="button"
+            tabindex="0"
+            data-program-gallery
+            data-gallery-title="텃밭 자연 체험"
+            data-gallery-start="1"
+            data-gallery-images="media/program/farm_kid1.jpg|media/program/farm_kid2.jpg|media/program/farm_kid3.jpg|media/program/farm_kid4.jpg|media/program/farm_kid5.jpg|media/program/farm_kid6.jpg|media/program/farm_kid7.jpg|media/program/farm_kid8.jpg"
+            aria-label="텃밭 자연 체험 사진 갤러리 열기"
+          >
             <div class="program-img">
-              <img src="media/kids/ua/2.png" alt="자유놀이 활동 사진">
+              <img src="media/program/farm_kid2.jpg" alt="텃밭 자연 체험 사진">
+              <span class="program-gallery-badge">사진 더보기 8</span>
             </div>
             <span>01</span>
-            <h3>자유놀이와 역할놀이</h3>
-          </article>
-          <article>
-            <div class="program-img">
-              <img src="media/kids/0a/8.png" alt="신체 활동 사진">
-            </div>
-            <span>02</span>
-            <h3>감각과 신체 활동</h3>
-          </article>
-          <article>
-            <div class="program-img">
-              <img src="media/kids/ua/3.png" alt="미술 표현 활동 사진">
-            </div>
-            <span>03</span>
-            <h3>미술과 표현 활동</h3>
-          </article>
-          <article>
-            <div class="program-img">
-              <img src="media/infra/playground_outside.jpeg" alt="텃밭 자연 체험 사진">
-            </div>
-            <span>04</span>
             <h3>텃밭 자연 체험</h3>
           </article>
-          <article>
+          <article
+            class="program-card program-card--clickable"
+            role="button"
+            tabindex="0"
+            data-program-gallery
+            data-gallery-title="현장 체험학습"
+            data-gallery-start="3"
+            data-gallery-images="media/program/field_trip_kid1.jpg|media/program/field_trip_kid2.jpg|media/program/field_trip_kid3.jpg|media/program/field_trip_kid4.jpg|media/program/field_trip_kid5.jpg|media/program/field_trip_kid6.jpg|media/program/field_trip_kid8.jpg|media/program/field_trip_kid9.jpg|media/program/field_trip_kid10.jpg|media/program/field_trip_kid11.jpg|media/program/field_trip_kid12.jpg|media/program/field_trip_kid14.jpg|media/program/field_trip_kid15.jpg|media/program/field_trip_kid16.jpg|media/program/field_trip_kid17.jpg|media/program/field_trip_kid18.jpg|media/program/field_trip_kid19.jpg|media/program/field_trip_kid20.jpg|media/program/field_trip_kid21.jpg|media/program/field_trip_kid22.jpg|media/program/field_trip_kid23.jpg"
+            aria-label="현장 체험학습 사진 갤러리 열기"
+          >
             <div class="program-img">
-              <img src="media/kids/ua/1.png" alt="언어 창의 활동 사진">
+              <img src="media/program/field_trip_kid4.jpg" alt="현장 체험학습 사진">
+              <span class="program-gallery-badge">사진 더보기 21</span>
+            </div>
+            <span>02</span>
+            <h3>현장 체험학습</h3>
+          </article>
+          <article
+            class="program-card program-card--clickable"
+            role="button"
+            tabindex="0"
+            data-program-gallery
+            data-gallery-title="실내놀이터 이용사진"
+            data-gallery-start="1"
+            data-gallery-images="media/program/inside_playground_kid.jpg|media/program/inside_playground_kid1.jpg|media/program/inside_playground_kid2.jpg"
+            aria-label="실내놀이터 이용사진 갤러리 열기"
+          >
+            <div class="program-img">
+              <img src="media/program/inside_playground_kid1.jpg" alt="실내놀이터 이용사진">
+              <span class="program-gallery-badge">사진 더보기 3</span>
+            </div>
+            <span>03</span>
+            <h3>실내놀이터 이용사진</h3>
+          </article>
+          <article
+            class="program-card program-card--clickable"
+            role="button"
+            tabindex="0"
+            data-program-gallery
+            data-gallery-title="코딩 수업"
+            data-gallery-images="media/program/coding_kid1.png|media/program/coding_kid2.png|media/program/coding_kid3.png|media/program/coding_kid4.png|media/program/coding_kid5.png|media/program/coding_kid6.png|media/program/coding_kid7.png"
+            aria-label="코딩 수업 사진 갤러리 열기"
+          >
+            <div class="program-img">
+              <img src="media/program/coding_kid1.png" alt="코딩 수업 사진">
+              <span class="program-gallery-badge">사진 더보기 7</span>
+            </div>
+            <span>04</span>
+            <h3>코딩 수업</h3>
+          </article>
+          <article
+            class="program-card program-card--clickable"
+            role="button"
+            tabindex="0"
+            data-program-gallery
+            data-gallery-title="영어 수업"
+            data-gallery-images="media/program/english_kid1.jpg|media/program/english_kid2.jpg|media/program/english_kid3.jpg|media/program/english_kid4.jpg|media/program/english_kid5.jpg|media/program/english_kid6.jpg"
+            aria-label="영어 수업 사진 갤러리 열기"
+          >
+            <div class="program-img">
+              <img src="media/program/english_kid1.jpg" alt="영어 수업 사진">
+              <span class="program-gallery-badge">사진 더보기 6</span>
             </div>
             <span>05</span>
-            <h3>언어와 창의 활동</h3>
+            <h3>영어 수업</h3>
           </article>
-          <article>
+          <article
+            class="program-card program-card--clickable"
+            role="button"
+            tabindex="0"
+            data-program-gallery
+            data-gallery-title="뮤직수업"
+            data-gallery-start="5"
+            data-gallery-images="media/program/music_kid1.jpg|media/program/music_kid2.jpg|media/program/music_kid3.jpg|media/program/music_kid5.jpg|media/program/music_kid6.jpg|media/program/music_kid7.jpg"
+            aria-label="뮤직수업 사진 갤러리 열기"
+          >
             <div class="program-img">
-              <img src="media/kids/ua/5.png" alt="탐구 생활 활동 사진">
+              <img src="media/program/music_kid7.jpg" alt="뮤직수업 사진">
+              <span class="program-gallery-badge">사진 더보기 6</span>
             </div>
             <span>06</span>
-            <h3>탐구와 생활 습관</h3>
+            <h3>뮤직수업</h3>
           </article>
         </div>
       </section>
+
+      <div class="gallery-modal" data-program-modal hidden aria-hidden="true">
+        <button class="gallery-backdrop" type="button" data-gallery-close aria-label="갤러리 닫기"></button>
+        <div class="gallery-dialog" role="dialog" aria-modal="true" aria-labelledby="gallery-title">
+          <div class="gallery-top">
+            <h2 id="gallery-title" data-gallery-title></h2>
+            <button class="gallery-close" type="button" data-gallery-close aria-label="갤러리 닫기">×</button>
+          </div>
+          <div class="gallery-stage">
+            <button class="gallery-arrow gallery-arrow--prev" type="button" data-gallery-prev aria-label="이전 사진">‹</button>
+            <img data-gallery-image src="" alt="">
+            <button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="다음 사진">›</button>
+          </div>
+          <p class="gallery-count" data-gallery-count></p>
+        </div>
+      </div>
 
       <!-- ── 반별 활동 ── -->
       <section class="section kids-activity" id="kids">
@@ -311,56 +385,35 @@
         <div class="section-heading">
           <p class="eyebrow">Our Teachers</p>
           <h2>교사 소개</h2>
-          <p>아이를 진심으로 사랑하고 이해하는 경험 많은 보육교사들이 함께합니다.</p>
+          <p>아이를 진심으로 사랑하고 이해하는 원장 선생님이 함께합니다.</p>
         </div>
         <div class="teachers-grid">
           <div class="teacher-card">
-            <div class="teacher-avatar" aria-hidden="true"></div>
+            <img class="teacher-photo" src="media/teacher.jpg" alt="원장 선생님 사진">
             <div class="teacher-info">
+              <p class="teacher-kicker">원 운영 및 보육 총괄</p>
               <h3>원장 선생님</h3>
-              <p class="teacher-role">원장 · 보육교사 1급 · 경력 20년+</p>
+              <p class="teacher-role">보육교사 1급 · 원장 자격 20년+ · 해외연수 다수</p>
+              <p class="teacher-message">
+                아이가 처음 어린이집을 만나는 순간부터 안정적으로 적응할 수 있도록 하루의 생활, 놀이, 식사, 안전을 세심하게 살핍니다.
+                가정과의 소통을 중요하게 생각하며 아이마다 다른 속도를 존중하는 보육을 지향합니다.
+              </p>
+              <ul class="teacher-highlights" aria-label="원장 선생님 주요 소개">
+                <li>
+                  <strong>20년+</strong>
+                  <span>원장 자격 보유</span>
+                </li>
+                <li>
+                  <strong>1급</strong>
+                  <span>보육교사 자격</span>
+                </li>
+                <li>
+                  <strong>연수</strong>
+                  <span>해외연수 다수 경험</span>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="teacher-card">
-            <div class="teacher-avatar" aria-hidden="true"></div>
-            <div class="teacher-info">
-              <h3>영아반 담임 선생님</h3>
-              <p class="teacher-role">영아반 담임 · 보육교사 1급</p>
-            </div>
-          </div>
-          <div class="teacher-card">
-            <div class="teacher-avatar" aria-hidden="true"></div>
-            <div class="teacher-info">
-              <h3>유아반 담임 선생님</h3>
-              <p class="teacher-role">유아반 담임 · 보육교사 1급</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── 학부모 후기 ── -->
-      <section class="section reviews" id="reviews">
-        <div class="section-heading">
-          <p class="eyebrow">Parent Reviews</p>
-          <h2>학부모 후기</h2>
-          <p>헨젤과 그레텔 어린이집을 먼저 경험한 학부모님들의 진솔한 이야기를 들어보세요.</p>
-        </div>
-        <div class="reviews-grid">
-          <blockquote class="review-card">
-            <div class="review-stars" aria-label="별점 5점">★★★★★</div>
-            <p>"선생님들이 정말 아이를 가족처럼 대해주셔서 감동받았어요. 아이가 매일 어린이집 가고 싶다고 해서 너무 행복합니다."</p>
-            <cite>— 7세 자녀 학부모</cite>
-          </blockquote>
-          <blockquote class="review-card">
-            <div class="review-stars" aria-label="별점 5점">★★★★★</div>
-            <p>"통학버스 덕분에 출퇴근하면서도 마음이 편해요. 안전하게 데려다주시고 연락도 꼼꼼히 해주셔서 믿음이 갑니다."</p>
-            <cite>— 5세 자녀 학부모</cite>
-          </blockquote>
-          <blockquote class="review-card">
-            <div class="review-stars" aria-label="별점 5점">★★★★★</div>
-            <p>"텃밭에서 감자 캐는 사진 보고 너무 귀여웠어요. 아이가 집에 와서 '내가 키운 감자!'라며 자랑하는 게 정말 뿌듯했습니다."</p>
-            <cite>— 4세 자녀 학부모</cite>
-          </blockquote>
         </div>
       </section>
 
@@ -372,12 +425,34 @@
           <p>입소 및 운영에 관한 기본 안내입니다. 자세한 사항은 상담을 통해 확인하실 수 있습니다.</p>
         </div>
         <div class="recruit-grid">
-          <div class="recruit-item">
+          <div class="recruit-item recruit-item--ages">
             <h3>모집 연령</h3>
-            <ul>
-              <li>영아반 — 만 0 – 2세</li>
-              <li>유아반 — 만 3 – 5세</li>
-            </ul>
+            <div class="age-class-grid" aria-label="연령별 모집 반">
+              <div class="age-class">
+                <strong>0세반</strong>
+                <span>영아반</span>
+              </div>
+              <div class="age-class">
+                <strong>1세반</strong>
+                <span>영아반</span>
+              </div>
+              <div class="age-class">
+                <strong>2세반</strong>
+                <span>영아반</span>
+              </div>
+              <div class="age-class">
+                <strong>3세반</strong>
+                <span>유아반</span>
+              </div>
+              <div class="age-class">
+                <strong>4세반</strong>
+                <span>유아반</span>
+              </div>
+              <div class="age-class">
+                <strong>5세반</strong>
+                <span>유아반</span>
+              </div>
+            </div>
           </div>
           <div class="recruit-item">
             <h3>운영 시간</h3>
@@ -390,6 +465,7 @@
           <div class="recruit-item">
             <h3>통학버스</h3>
             <ul>
+              <li>통학버스 2대 운영 중</li>
               <li>등원·하원 노선 운행</li>
               <li>자세한 노선은 상담 시 안내</li>
               <li>안전벨트 및 동승 교사 탑승</li>
@@ -398,6 +474,10 @@
           <div class="recruit-item">
             <h3>입소 방법</h3>
             <ul>
+              <li>
+                <a href="https://www.childcare.go.kr/?menuno=175" target="_blank" rel="noopener noreferrer">보육포탈(아이사랑) 입소대기</a>
+                후 연락
+              </li>
               <li>카카오 오픈채팅 문의</li>
               <li>방문 상담 — 사전 예약 필요</li>
             </ul>
@@ -444,7 +524,7 @@
           <p>입소 상담 신청서를 작성해 주시면 확인 후 빠르게 연락드리겠습니다.</p>
         </div>
         <div class="contact-panel">
-          <form class="contact-form" data-contact-form data-recipient-email="chadoli28@naver.com">
+          <form class="contact-form" data-contact-form data-recipient-email="henjell@hanmail.net">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
             <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -573,6 +653,113 @@
           click_section: getClickSection(target),
         });
       });
+
+      const programGalleryModal = document.querySelector("[data-program-modal]");
+
+      if (programGalleryModal) {
+        const galleryTitle = programGalleryModal.querySelector("[data-gallery-title]");
+        const galleryImage = programGalleryModal.querySelector("[data-gallery-image]");
+        const galleryCount = programGalleryModal.querySelector("[data-gallery-count]");
+        const prevButton = programGalleryModal.querySelector("[data-gallery-prev]");
+        const nextButton = programGalleryModal.querySelector("[data-gallery-next]");
+        const closeButtons = programGalleryModal.querySelectorAll("[data-gallery-close]");
+        let activeGalleryTitle = "";
+        let activeGalleryImages = [];
+        let activeGalleryIndex = 0;
+        let previousFocus = null;
+
+        const renderGalleryImage = () => {
+          if (!activeGalleryImages.length) {
+            return;
+          }
+
+          galleryTitle.textContent = activeGalleryTitle;
+          galleryImage.src = activeGalleryImages[activeGalleryIndex];
+          galleryImage.alt = `${activeGalleryTitle} 사진 ${activeGalleryIndex + 1}`;
+          galleryCount.textContent = `${activeGalleryIndex + 1} / ${activeGalleryImages.length}`;
+
+          const hasMultipleImages = activeGalleryImages.length > 1;
+          prevButton.hidden = !hasMultipleImages;
+          nextButton.hidden = !hasMultipleImages;
+        };
+
+        const moveGallery = (direction) => {
+          if (!activeGalleryImages.length) {
+            return;
+          }
+
+          activeGalleryIndex =
+            (activeGalleryIndex + direction + activeGalleryImages.length) % activeGalleryImages.length;
+          renderGalleryImage();
+        };
+
+        const closeGallery = () => {
+          programGalleryModal.hidden = true;
+          programGalleryModal.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("is-gallery-open");
+          galleryImage.removeAttribute("src");
+
+          if (previousFocus instanceof HTMLElement) {
+            previousFocus.focus();
+          }
+        };
+
+        const openGallery = (card) => {
+          activeGalleryImages = (card.dataset.galleryImages || "").split("|").filter(Boolean);
+
+          if (!activeGalleryImages.length) {
+            return;
+          }
+
+          activeGalleryTitle = card.dataset.galleryTitle || "프로그램 사진";
+          activeGalleryIndex = Number.parseInt(card.dataset.galleryStart || "0", 10);
+
+          if (Number.isNaN(activeGalleryIndex) || activeGalleryIndex < 0) {
+            activeGalleryIndex = 0;
+          }
+
+          activeGalleryIndex = Math.min(activeGalleryIndex, activeGalleryImages.length - 1);
+          previousFocus = document.activeElement;
+          programGalleryModal.hidden = false;
+          programGalleryModal.setAttribute("aria-hidden", "false");
+          document.body.classList.add("is-gallery-open");
+          renderGalleryImage();
+          closeButtons[0]?.focus();
+
+          trackEvent("program_gallery_open", {
+            program_name: activeGalleryTitle,
+            image_count: activeGalleryImages.length,
+          });
+        };
+
+        document.querySelectorAll("[data-program-gallery]").forEach((card) => {
+          card.addEventListener("click", () => openGallery(card));
+          card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openGallery(card);
+            }
+          });
+        });
+
+        closeButtons.forEach((button) => button.addEventListener("click", closeGallery));
+        prevButton.addEventListener("click", () => moveGallery(-1));
+        nextButton.addEventListener("click", () => moveGallery(1));
+
+        document.addEventListener("keydown", (event) => {
+          if (programGalleryModal.hidden) {
+            return;
+          }
+
+          if (event.key === "Escape") {
+            closeGallery();
+          } else if (event.key === "ArrowLeft") {
+            moveGallery(-1);
+          } else if (event.key === "ArrowRight") {
+            moveGallery(1);
+          }
+        });
+      }
 
       const contactForm = document.querySelector("[data-contact-form]");
 
