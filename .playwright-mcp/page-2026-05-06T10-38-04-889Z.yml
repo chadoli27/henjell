@@ -1,0 +1,365 @@
+- generic [active] [ref=e1]:
+  - banner "상단 메뉴" [ref=e2]:
+    - link "헨젤과 그레텔 어린이집" [ref=e3] [cursor=pointer]:
+      - /url: "#top"
+    - navigation "주요 메뉴" [ref=e4]:
+      - link "교육프로그램" [ref=e5] [cursor=pointer]:
+        - /url: "#program"
+      - link "영어특화" [ref=e6] [cursor=pointer]:
+        - /url: "#english-special"
+      - link "시설·안전" [ref=e7] [cursor=pointer]:
+        - /url: "#space"
+      - link "교사 소개" [ref=e8] [cursor=pointer]:
+        - /url: "#teachers"
+      - link "모집 안내" [ref=e9] [cursor=pointer]:
+        - /url: "#recruit"
+      - link "상담" [ref=e10] [cursor=pointer]:
+        - /url: "#contact"
+  - main [ref=e11]:
+    - region "헨젤과 그레텔 어린이집 첫 화면" [ref=e12]:
+      - generic [ref=e14]:
+        - paragraph [ref=e15]: 경기도 광주 양벌동 · 마루들길
+        - heading "헨젤과그레텔 어린이집" [level=1] [ref=e16]
+        - paragraph [ref=e17]:
+          - text: 경기도 광주시 양벌동 마루들길에서 즐겁게 놀고 안심하는 하루를 보냅니다.
+          - text: 실내 놀이터 · 현장체험 · 텃밭 체험 · 통학버스 운영
+          - text: 안전한 공간에서 따뜻한 교사진이 아이의 하루를 세심하게 돌봅니다.
+        - link "입소 상담 문의" [ref=e19] [cursor=pointer]:
+          - /url: "#contact"
+    - region "헨젤과 그레텔 핵심 특징" [ref=e20]:
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: Why Henjell
+        - heading "헨젤과 그레텔이 사랑받는 이유" [level=2] [ref=e23]
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - strong [ref=e26]: 키즈카페같은 실내 놀이터
+          - generic [ref=e27]: 실내에서도 마음껏 움직이는 놀이 공간
+        - generic [ref=e28]:
+          - strong [ref=e29]: 주기적 현장체험 학습
+          - generic [ref=e30]: 아이들이 직접 보고 경험하는 바깥 활동
+        - generic [ref=e31]:
+          - strong [ref=e32]: 텃밭 자연 체험
+          - generic [ref=e33]: 직접 심고 키우는 감자·무 체험
+        - generic [ref=e34]:
+          - strong [ref=e35]: 스프링쿨러 완비
+          - generic [ref=e36]: 전 시설 화재 자동 진압 설치 완료
+        - generic [ref=e37]:
+          - strong [ref=e38]: 통학버스 운영
+          - generic [ref=e39]: 안전한 등하원 통학버스 운영
+        - generic [ref=e40]:
+          - strong [ref=e41]: 따뜻한 교사진
+          - generic [ref=e42]: 경험 많은 보육교사가 함께합니다
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - paragraph [ref=e45]: Program
+        - heading "놀면서 배우고, 해보며 자라는 교육과정" [level=2] [ref=e46]
+        - paragraph [ref=e47]: 아이의 발달 단계에 맞춰 신체, 언어, 사회성, 예술, 자연 탐구 경험이 균형 있게 이어지도록 하루를 구성합니다.
+      - generic [ref=e48]:
+        - button "텃밭 자연 체험 사진 갤러리 열기" [ref=e49] [cursor=pointer]:
+          - generic [ref=e50]:
+            - img "텃밭 자연 체험 사진" [ref=e51]
+            - generic [ref=e52]: 사진 더보기 8
+          - generic [ref=e53]: "01"
+          - heading "텃밭 자연 체험" [level=3] [ref=e54]
+        - button "현장 체험학습 사진 갤러리 열기" [ref=e55] [cursor=pointer]:
+          - generic [ref=e56]:
+            - img "현장 체험학습 사진" [ref=e57]
+            - generic [ref=e58]: 사진 더보기 21
+          - generic [ref=e59]: "02"
+          - heading "현장 체험학습" [level=3] [ref=e60]
+        - button "실내놀이터 이용사진 갤러리 열기" [ref=e61] [cursor=pointer]:
+          - generic [ref=e62]:
+            - img "실내놀이터 이용사진" [ref=e63]
+            - generic [ref=e64]: 사진 더보기 3
+          - generic [ref=e65]: "03"
+          - heading "실내놀이터 이용사진" [level=3] [ref=e66]
+        - button "코딩 수업 사진 갤러리 열기" [ref=e67] [cursor=pointer]:
+          - generic [ref=e68]:
+            - img "코딩 수업 사진" [ref=e69]
+            - generic [ref=e70]: 사진 더보기 7
+          - generic [ref=e71]: "04"
+          - heading "코딩 수업" [level=3] [ref=e72]
+        - button "영어 수업 사진 갤러리 열기" [ref=e73] [cursor=pointer]:
+          - generic [ref=e74]:
+            - img "영어 수업 사진" [ref=e75]
+            - generic [ref=e76]: 사진 더보기 7
+          - generic [ref=e77]: "05"
+          - heading "영어 수업" [level=3] [ref=e78]
+        - button "뮤직수업 사진 갤러리 열기" [ref=e79] [cursor=pointer]:
+          - generic [ref=e80]:
+            - img "뮤직수업 사진" [ref=e81]
+            - generic [ref=e82]: 사진/영상 더보기 9
+          - generic [ref=e83]: "06"
+          - heading "뮤직수업" [level=3] [ref=e84]
+    - region "헨젤과그레텔 영어특화 프로그램 운영 예정" [ref=e85]:
+      - generic [ref=e86]:
+        - paragraph [ref=e87]: Henjell Special Routine
+        - heading "매일 듣고 말해보는 우리 반 영어특화 루틴" [level=2] [ref=e88]
+        - paragraph [ref=e89]: 헨젤과그레텔에서는 아이 한 명 한 명에게 매일 영어가 들리고, 직접 따라 말해볼 수 있는 영어 키오스크 루틴을 운영할 예정입니다.
+      - generic [ref=e90]:
+        - generic "아이들이 영어 키오스크를 사용하는 모습 사진 자리" [ref=e91]:
+          - figure "영어특화 활동 영상" [ref=e92]:
+            - generic [ref=e93]: 사용 중인 브라우저에서 영상을 재생할 수 없습니다.
+            - generic [ref=e94]: 영어특화 활동 영상
+          - figure "아이들이 키오스크를 사용하는 모습" [ref=e95]:
+            - img "아이들이 영어 키오스크를 사용하는 모습" [ref=e96]
+            - generic [ref=e97]: 아이들이 키오스크를 사용하는 모습
+          - figure "영어를 듣고 말해보는 교실 활동" [ref=e98]:
+            - img "아이들이 영어를 듣고 말해보는 교실 활동" [ref=e99]
+            - generic [ref=e100]: 영어를 듣고 말해보는 교실 활동
+        - generic [ref=e101]:
+          - paragraph [ref=e102]: 어린이집 자유놀이 시간 개별에 맞춤 영어 놀이교육 활동
+          - paragraph [ref=e103]: (2026년 5월부터 시작)
+          - heading "아이마다 영어를 듣고 말해보는 시간이 생깁니다" [level=3] [ref=e104]
+          - generic "영어특화 프로그램 핵심 정보" [ref=e105]:
+            - generic [ref=e106]: 매일 영어 노출
+            - generic [ref=e107]: 아이별 참여 루틴
+            - generic [ref=e108]: 듣기와 말하기
+          - list [ref=e109]:
+            - listitem [ref=e110]: 매일 짧은 루틴으로 영어 소리를 자연스럽게 들어요.
+            - listitem [ref=e111]: 아이마다 직접 터치하고 따라 말해보는 시간을 가져요.
+            - listitem [ref=e112]: 교사가 참여 여부를 확인하며 꾸준히 이어가요.
+          - link "특화 프로그램 상담 문의" [ref=e113] [cursor=pointer]:
+            - /url: "#contact"
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - heading "영아반 활동" [level=2] [ref=e116]
+        - generic [ref=e118]:
+          - img "영아반 활동 사진" [ref=e119]
+          - img "영아반 활동 사진" [ref=e120]
+          - img "영아반 활동 사진" [ref=e121]
+          - img "영아반 활동 사진" [ref=e122]
+          - img "영아반 활동 사진" [ref=e123]
+          - img "영아반 활동 사진" [ref=e124]
+          - img "영아반 활동 사진" [ref=e125]
+          - img "영아반 활동 사진" [ref=e126]
+          - img "영아반 활동 사진" [ref=e127]
+          - img "영아반 활동 사진" [ref=e128]
+          - img "영아반 활동 사진" [ref=e129]
+          - img "영아반 활동 사진" [ref=e130]
+          - img "영아반 활동 사진" [ref=e131]
+          - img [ref=e132]
+          - img [ref=e133]
+          - img [ref=e134]
+          - img [ref=e135]
+          - img [ref=e136]
+          - img [ref=e137]
+          - img [ref=e138]
+          - img [ref=e139]
+          - img [ref=e140]
+          - img [ref=e141]
+          - img [ref=e142]
+          - img [ref=e143]
+          - img [ref=e144]
+      - generic [ref=e145]:
+        - heading "유아반 활동" [level=2] [ref=e146]
+        - generic [ref=e148]:
+          - img "유아반 활동 사진" [ref=e149]
+          - img "유아반 활동 사진" [ref=e150]
+          - img "유아반 활동 사진" [ref=e151]
+          - img "유아반 활동 사진" [ref=e152]
+          - img "유아반 활동 사진" [ref=e153]
+          - img "유아반 활동 사진" [ref=e154]
+          - img "유아반 활동 사진" [ref=e155]
+          - img "유아반 활동 사진" [ref=e156]
+          - img "유아반 활동 사진" [ref=e157]
+          - img "유아반 활동 사진" [ref=e158]
+          - img "유아반 활동 사진" [ref=e159]
+          - img [ref=e160]
+          - img [ref=e161]
+          - img [ref=e162]
+          - img [ref=e163]
+          - img [ref=e164]
+          - img [ref=e165]
+          - img [ref=e166]
+          - img [ref=e167]
+          - img [ref=e168]
+          - img [ref=e169]
+          - img [ref=e170]
+    - paragraph [ref=e173]: 매일매일이 행복한 발견입니다
+    - generic [ref=e174]:
+      - generic [ref=e175]:
+        - paragraph [ref=e176]: Safety & Facilities
+        - heading "시설과 안전" [level=2] [ref=e177]
+        - paragraph [ref=e178]: 아이가 안심하고 생활할 수 있도록 안전 기준을 꼼꼼히 갖추고, 밝고 쾌적한 공간에서 하루를 보낼 수 있도록 준비합니다.
+      - generic [ref=e179]:
+        - generic [ref=e180]:
+          - strong [ref=e181]: 스프링쿨러 설치
+          - paragraph [ref=e182]: 전 시설 화재 자동 진압 설치 완료
+        - generic [ref=e183]:
+          - strong [ref=e184]: CCTV 상시 운영
+          - paragraph [ref=e185]: 내·외부 CCTV 24시간 모니터링
+        - generic [ref=e186]:
+          - strong [ref=e187]: 정기 안전 점검
+          - paragraph [ref=e188]: 소방 훈련·안전 점검 정기 실시
+      - generic [ref=e189]:
+        - figure "안전한 등하원을 돕는 어린이집 외관" [ref=e190]:
+          - img "헨젤과 그레텔 어린이집 외관" [ref=e191]
+          - generic [ref=e192]: 안전한 등하원을 돕는 어린이집 외관
+        - figure "키즈카페처럼 즐겁게 뛰어놀 수 있는 실내 놀이터" [ref=e193]:
+          - img "키즈카페처럼 놀이기구가 갖춰진 실내 놀이터" [ref=e194]
+          - generic [ref=e195]: 키즈카페처럼 즐겁게 뛰어놀 수 있는 실내 놀이터
+        - figure "신나게 뛰어놀 수 있는 야외 놀이공간" [ref=e196]:
+          - img "미끄럼틀과 놀이기구가 갖춰진 야외 놀이터" [ref=e197]
+          - generic [ref=e198]: 신나게 뛰어놀 수 있는 야외 놀이공간
+        - figure "아이들이 편하게 움직일 수 있는 실내 동선" [ref=e199]:
+          - img "밝게 정돈된 어린이집 실내 공간" [ref=e200]
+          - generic [ref=e201]: 아이들이 편하게 움직일 수 있는 실내 동선
+        - figure "책, 역할놀이, 감각 놀이가 함께 있는 환경" [ref=e202]:
+          - img "책과 역할놀이 교구가 준비된 보육실" [ref=e203]
+          - generic [ref=e204]: 책, 역할놀이, 감각 놀이가 함께 있는 환경
+        - figure "함께 만들고 이야기하는 활동 공간" [ref=e205]:
+          - img "테이블과 교구가 놓인 넓은 활동실" [ref=e206]
+          - generic [ref=e207]: 함께 만들고 이야기하는 활동 공간
+    - generic [ref=e209]:
+      - generic "식단과 간식 사진" [ref=e211]:
+        - img "어린이집 식단 사진" [ref=e212]
+        - img "어린이집 식단 사진" [ref=e213]
+        - img "어린이집 식단 사진" [ref=e214]
+        - img "어린이집 식단 사진" [ref=e215]
+      - generic [ref=e216]:
+        - paragraph [ref=e217]: Meals & Health
+        - heading "식단과 건강관리" [level=2] [ref=e218]
+        - list [ref=e219]:
+          - listitem [ref=e220]:
+            - strong [ref=e221]: 균형 잡힌 급식
+            - generic [ref=e222]: 신선한 제철 재료 사용, 알레르기 개별 대응
+          - listitem [ref=e223]:
+            - strong [ref=e224]: 오전·오후 간식
+            - generic [ref=e225]: 과일·우유 등 건강한 간식 매일 제공
+          - listitem [ref=e226]:
+            - strong [ref=e227]: 월간 식단 공개
+            - generic [ref=e228]: 식단표 사전 공지로 가정과 함께 관리
+          - listitem [ref=e229]:
+            - strong [ref=e230]: 건강 이상 즉각 대응
+            - generic [ref=e231]: 등원 시 건강 확인 · 이상 시 즉시 연락
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - paragraph [ref=e234]: Our Teachers
+        - heading "교사 소개" [level=2] [ref=e235]
+        - paragraph [ref=e236]: 아이를 진심으로 사랑하고 이해하는 원장 선생님이 함께합니다.
+      - generic [ref=e238]:
+        - img "원장 선생님 사진" [ref=e239]
+        - generic [ref=e240]:
+          - paragraph [ref=e241]: 원 운영 및 보육 총괄
+          - heading "원장 선생님" [level=3] [ref=e242]
+          - paragraph [ref=e243]: 보육교사 1급 · 원장 자격 20년+ · 해외연수 다수
+          - paragraph [ref=e244]: 아이가 처음 어린이집을 만나는 순간부터 안정적으로 적응할 수 있도록 하루의 생활, 놀이, 식사, 안전을 세심하게 살핍니다. 가정과의 소통을 중요하게 생각하며 아이마다 다른 속도를 존중하는 보육을 지향합니다.
+          - list "원장 선생님 주요 소개" [ref=e245]:
+            - listitem [ref=e246]:
+              - strong [ref=e247]: 20년+
+              - generic [ref=e248]: 원장 자격 보유
+            - listitem [ref=e249]:
+              - strong [ref=e250]: 1급
+              - generic [ref=e251]: 보육교사 자격
+            - listitem [ref=e252]:
+              - strong [ref=e253]: 연수
+              - generic [ref=e254]: 해외연수 다수 경험
+    - generic [ref=e255]:
+      - generic [ref=e256]:
+        - paragraph [ref=e257]: Enrollment
+        - heading "모집 안내" [level=2] [ref=e258]
+        - paragraph [ref=e259]: 입소 및 운영에 관한 기본 안내입니다. 자세한 사항은 상담을 통해 확인하실 수 있습니다.
+      - generic [ref=e260]:
+        - generic [ref=e261]:
+          - heading "모집 연령" [level=3] [ref=e262]
+          - generic "연령별 모집 반" [ref=e263]:
+            - generic [ref=e264]:
+              - strong [ref=e265]: 0세반
+              - generic [ref=e266]: 영아반
+            - generic [ref=e267]:
+              - strong [ref=e268]: 1세반
+              - generic [ref=e269]: 영아반
+            - generic [ref=e270]:
+              - strong [ref=e271]: 2세반
+              - generic [ref=e272]: 영아반
+            - generic [ref=e273]:
+              - strong [ref=e274]: 3세반
+              - generic [ref=e275]: 유아반
+            - generic [ref=e276]:
+              - strong [ref=e277]: 4세반
+              - generic [ref=e278]: 유아반
+            - generic [ref=e279]:
+              - strong [ref=e280]: 5세반
+              - generic [ref=e281]: 유아반
+        - generic [ref=e282]:
+          - heading "운영 시간" [level=3] [ref=e283]
+          - list [ref=e284]:
+            - listitem [ref=e285]: · 기본 보육 07:30 – 16:00
+            - listitem [ref=e286]: · 연장 보육 16:00 – 19:30
+            - listitem [ref=e287]: · 휴원 — 토·일·공휴일
+        - generic [ref=e288]:
+          - heading "통학버스" [level=3] [ref=e289]
+          - list [ref=e290]:
+            - listitem [ref=e291]: · 통학버스 2대 운영 중
+            - listitem [ref=e292]: · 등원·하원 노선 운행
+            - listitem [ref=e293]: · 자세한 노선은 상담 시 안내
+            - listitem [ref=e294]: · 안전벨트 및 동승 교사 탑승
+        - generic [ref=e295]:
+          - heading "입소 방법" [level=3] [ref=e296]
+          - list [ref=e297]:
+            - listitem [ref=e298]:
+              - text: ·
+              - link "보육포탈(아이사랑) 입소대기" [ref=e299] [cursor=pointer]:
+                - /url: https://www.childcare.go.kr/?menuno=175
+              - text: 후 연락
+            - listitem [ref=e300]: · 카카오 오픈채팅 문의
+            - listitem [ref=e301]: · 방문 상담 — 사전 예약 필요
+    - region "오시는 길" [ref=e302]:
+      - generic [ref=e303]:
+        - paragraph [ref=e304]: Location
+        - heading "오시는 길" [level=2] [ref=e305]
+        - paragraph [ref=e306]: 경기도 광주시 마루들길 231-5
+      - iframe [ref=e308]
+      - generic "지도 앱에서 보기" [ref=e309]:
+        - link "네이버 지도에서 보기" [ref=e310] [cursor=pointer]:
+          - /url: https://map.naver.com/v5/search/경기도%20광주시%20마루들길%20231-5
+        - link "카카오맵에서 보기" [ref=e311] [cursor=pointer]:
+          - /url: https://map.kakao.com/link/search/경기도%20광주시%20마루들길%20231-5
+    - region "입소 상담 신청" [ref=e312]:
+      - generic [ref=e313]:
+        - paragraph [ref=e314]: Contact
+        - heading "상담 신청" [level=2] [ref=e315]
+        - paragraph [ref=e316]: 입소 상담 신청서를 작성해 주시면 확인 후 빠르게 연락드리겠습니다.
+      - generic [ref=e317]:
+        - generic [ref=e318]:
+          - generic [ref=e319]:
+            - generic [ref=e320]:
+              - generic [ref=e321]: 보호자 성함
+              - textbox "보호자 성함" [ref=e322]
+            - generic [ref=e323]:
+              - generic [ref=e324]: 연락처
+              - textbox "연락처" [ref=e325]
+          - generic [ref=e326]:
+            - generic [ref=e327]:
+              - generic [ref=e328]: 이메일
+              - textbox "이메일" [ref=e329]:
+                - /placeholder: 답장 받을 이메일
+            - generic [ref=e330]:
+              - generic [ref=e331]: 아이 연령
+              - combobox "아이 연령" [ref=e332]:
+                - option "선택해 주세요" [selected]
+                - option "만 0세"
+                - option "만 1세"
+                - option "만 2세"
+                - option "만 3세"
+                - option "만 4세"
+                - option "만 5세"
+          - generic [ref=e333]:
+            - generic [ref=e334]: 희망 상담 시간
+            - textbox "희망 상담 시간" [ref=e335]:
+              - /placeholder: "예: 평일 오후 3시"
+          - generic [ref=e336]:
+            - generic [ref=e337]: 문의 내용
+            - textbox "문의 내용" [ref=e338]:
+              - /placeholder: 궁금한 점이나 방문 희망 일정을 적어주세요.
+          - button "문의 완료" [ref=e339] [cursor=pointer]
+          - paragraph [ref=e340]
+        - generic "상담 문의 방법" [ref=e341]:
+          - heading "바로 문의하기" [level=3] [ref=e342]
+          - paragraph [ref=e343]: 카카오 오픈채팅이나 전화 상담도 가능합니다.
+          - generic [ref=e344]:
+            - link "카카오 오픈채팅 상담" [ref=e345] [cursor=pointer]:
+              - /url: https://open.kakao.com/o/sTxWiJ1h
+            - link "전화 상담 031-798-4234" [ref=e346] [cursor=pointer]:
+              - /url: tel:031-798-4234

@@ -214,12 +214,12 @@
             tabindex="0"
             data-program-gallery
             data-gallery-title="영어 수업"
-            data-gallery-images="media/program/english_kid1.jpg|media/program/english_kid2.jpg|media/program/english_kid3.jpg|media/program/english_kid4.jpg|media/program/english_kid5.jpg|media/program/english_kid6.jpg"
+            data-gallery-images="media/program/english_kid1.jpg|media/program/english_kid2.jpg|media/program/english_kid3.jpg|media/program/english_kid4.jpg|media/program/english_kid5.jpg|media/program/english_kid6.jpg|media/program/music_kid6.jpg"
             aria-label="영어 수업 사진 갤러리 열기"
           >
             <div class="program-img">
               <img src="media/program/english_kid1.jpg" alt="영어 수업 사진">
-              <span class="program-gallery-badge">사진 더보기 6</span>
+              <span class="program-gallery-badge">사진 더보기 7</span>
             </div>
             <span>05</span>
             <h3>영어 수업</h3>
@@ -230,13 +230,13 @@
             tabindex="0"
             data-program-gallery
             data-gallery-title="뮤직수업"
-            data-gallery-start="5"
-            data-gallery-images="media/program/music_kid1.jpg|media/program/music_kid2.jpg|media/program/music_kid3.jpg|media/program/music_kid5.jpg|media/program/music_kid6.jpg|media/program/music_kid7.jpg"
+            data-gallery-start="3"
+            data-gallery-images="media/program/music_kid2.jpg|media/program/music_kid3.jpg|media/program/music_kid5.jpg|media/program/music_kid7.jpg|media/program/music_kid8.jpg|media/program/music_kid9.jpg|media/program/music_kid10.jpg|media/program/music_kid11.jpg|media/program/music_kid1_video.mp4"
             aria-label="뮤직수업 사진 갤러리 열기"
           >
             <div class="program-img">
               <img src="media/program/music_kid7.jpg" alt="뮤직수업 사진">
-              <span class="program-gallery-badge">사진 더보기 6</span>
+              <span class="program-gallery-badge">사진/영상 더보기 9</span>
             </div>
             <span>06</span>
             <h3>뮤직수업</h3>
@@ -252,9 +252,10 @@
             <button class="gallery-close" type="button" data-gallery-close aria-label="갤러리 닫기">×</button>
           </div>
           <div class="gallery-stage">
-            <button class="gallery-arrow gallery-arrow--prev" type="button" data-gallery-prev aria-label="이전 사진">‹</button>
+            <button class="gallery-arrow gallery-arrow--prev" type="button" data-gallery-prev aria-label="이전 항목">‹</button>
             <img data-gallery-image src="" alt="">
-            <button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="다음 사진">›</button>
+            <video data-gallery-video controls playsinline preload="metadata" hidden></video>
+            <button class="gallery-arrow gallery-arrow--next" type="button" data-gallery-next aria-label="다음 항목">›</button>
           </div>
           <p class="gallery-count" data-gallery-count></p>
         </div>
@@ -753,6 +754,7 @@
       if (programGalleryModal) {
         const galleryTitle = programGalleryModal.querySelector("[data-gallery-title]");
         const galleryImage = programGalleryModal.querySelector("[data-gallery-image]");
+        const galleryVideo = programGalleryModal.querySelector("[data-gallery-video]");
         const galleryCount = programGalleryModal.querySelector("[data-gallery-count]");
         const prevButton = programGalleryModal.querySelector("[data-gallery-prev]");
         const nextButton = programGalleryModal.querySelector("[data-gallery-next]");
@@ -762,14 +764,31 @@
         let activeGalleryIndex = 0;
         let previousFocus = null;
 
+        const isGalleryVideo = (src) => /\.mp4(?:$|\?)/i.test(src);
+
         const renderGalleryImage = () => {
           if (!activeGalleryImages.length) {
             return;
           }
 
+          const activeItem = activeGalleryImages[activeGalleryIndex];
+          const activeItemIsVideo = isGalleryVideo(activeItem);
+
           galleryTitle.textContent = activeGalleryTitle;
-          galleryImage.src = activeGalleryImages[activeGalleryIndex];
-          galleryImage.alt = `${activeGalleryTitle} 사진 ${activeGalleryIndex + 1}`;
+          galleryImage.hidden = activeItemIsVideo;
+          galleryVideo.hidden = !activeItemIsVideo;
+
+          if (activeItemIsVideo) {
+            galleryImage.removeAttribute("src");
+            galleryVideo.src = activeItem;
+            galleryVideo.load();
+          } else {
+            galleryVideo.pause();
+            galleryVideo.removeAttribute("src");
+            galleryImage.src = activeItem;
+            galleryImage.alt = `${activeGalleryTitle} 사진 ${activeGalleryIndex + 1}`;
+          }
+
           galleryCount.textContent = `${activeGalleryIndex + 1} / ${activeGalleryImages.length}`;
 
           const hasMultipleImages = activeGalleryImages.length > 1;
@@ -792,6 +811,8 @@
           programGalleryModal.setAttribute("aria-hidden", "true");
           document.body.classList.remove("is-gallery-open");
           galleryImage.removeAttribute("src");
+          galleryVideo.pause();
+          galleryVideo.removeAttribute("src");
 
           if (previousFocus instanceof HTMLElement) {
             previousFocus.focus();

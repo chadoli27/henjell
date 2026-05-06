@@ -652,14 +652,28 @@ h3 {
 
 .gallery-stage {
   position: relative;
+  display: grid;
+  place-items: center;
   min-height: 0;
+  height: min(64svh, 620px);
+  overflow: hidden;
   background: #24190d;
 }
 
-.gallery-stage img {
-  width: 100%;
-  height: min(64svh, 620px);
+.gallery-stage [hidden] {
+  display: none !important;
+}
+
+.gallery-stage img,
+.gallery-stage video {
+  display: block;
+  grid-area: 1 / 1;
+  width: auto;
+  height: auto;
+  max-width: min(88%, 860px);
+  max-height: min(58svh, 540px);
   object-fit: contain;
+  object-position: center center;
   background: #24190d;
 }
 
