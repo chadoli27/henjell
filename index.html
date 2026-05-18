@@ -619,10 +619,8 @@
           <p>입소 상담 신청서를 작성해 주시면 확인 후 빠르게 연락드리겠습니다.</p>
         </div>
         <div class="contact-panel">
-          <form class="contact-form" data-contact-form data-recipient-email="henjell@hanmail.net">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <form class="contact-form" data-contact-form action="https://formspree.io/f/xredgrnr" method="POST">
+            <input class="form-honey" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="form-row">
               <div class="form-field">
                 <label for="parent-name">보호자 성함</label>
@@ -883,12 +881,12 @@
           event.preventDefault();
 
           const status = contactForm.querySelector("[data-form-status]");
-          const recipientEmail = contactForm.dataset.recipientEmail;
+          const formspreeEndpoint = contactForm.action;
           const submitButton = contactForm.querySelector(".contact-submit");
 
-          if (!recipientEmail || recipientEmail.includes("YOUR_EMAIL_HERE")) {
-            trackEvent("contact_form_blocked", { reason: "missing_recipient" });
-            status.textContent = "수신 이메일 주소를 먼저 설정해 주세요.";
+          if (!formspreeEndpoint || formspreeEndpoint.includes("YOUR_FORM_ID")) {
+            trackEvent("contact_form_blocked", { reason: "missing_formspree_endpoint" });
+            status.textContent = "Formspree 폼 엔드포인트를 먼저 설정해 주세요.";
             status.classList.add("is-error");
             return;
           }
@@ -907,7 +905,7 @@
           const childAge = formData.get("childAge").trim();
           const preferredTime = formData.get("preferredTime").trim() || "미기재";
           const message = formData.get("message").trim();
-          const honey = formData.get("_honey").trim();
+          const honey = formData.get("_gotcha").trim();
           const payload = {
             "보호자 성함": parentName,
             "연락처": phoneNumber,
@@ -915,15 +913,12 @@
             "아이 연령": childAge,
             "희망 상담 시간": preferredTime,
             "문의 내용": message,
-            _subject: `[입소 상담 신청] ${parentName}님 문의`,
-            _template: formData.get("_template"),
-            _captcha: formData.get("_captcha"),
-            _honey: honey,
+            subject: `[입소 상담 신청] ${parentName}님 문의`,
+            _gotcha: honey,
           };
 
           if (email) {
             payload.email = email;
-            payload._replyto = email;
           }
 
           if (honey) {
@@ -942,7 +937,7 @@
           status.textContent = "문의 내용을 전송하고 있습니다.";
           submitButton.disabled = true;
 
-          fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+          fetch(formspreeEndpoint, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -950,15 +945,19 @@
             },
             body: JSON.stringify(payload),
           })
-            .then((response) => {
+            .then(async (response) => {
+              const data = await response.json().catch(() => ({}));
+
               if (!response.ok) {
-                throw new Error("Form submission failed");
+                const errorMessage = data.errors?.map((error) => error.message).join(", ");
+                throw new Error(errorMessage || "Form submission failed");
               }
-              return response.json();
+
+              return data;
             })
             .then((data) => {
-              if (data.success === false) {
-                throw new Error(data.message || "Form submission failed");
+              if (Array.isArray(data.errors) && data.errors.length > 0) {
+                throw new Error(data.errors.map((error) => error.message).join(", "));
               }
 
               contactForm.reset();
@@ -972,9 +971,9 @@
               if (message.includes("web server") || message.includes("HTML files")) {
                 errorReason = "web_server_required";
                 status.textContent = "이메일 발송은 웹서버 주소에서만 가능합니다. http://localhost 또는 배포된 사이트에서 다시 시도해 주세요.";
-              } else if (message.includes("Activation") || message.includes("Activate Form")) {
-                errorReason = "activation_required";
-                status.textContent = "수신 이메일로 발송된 FormSubmit 인증 메일의 Activate Form 링크를 먼저 눌러주세요.";
+              } else if (message.toLowerCase().includes("form not found")) {
+                errorReason = "formspree_form_not_found";
+                status.textContent = "Formspree 폼 주소를 확인해 주세요.";
               } else {
                 status.textContent = "전송 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.";
               }
