@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
   <url>
     <loc>https://www.henjell.com/</loc>
-    <lastmod>2026-05-18T00:00:00+09:00</lastmod>
+    <lastmod>2026-11-20T00:00:00+09:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://www.henjell.com/media/infra/building_img.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/infra/building.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/infra/playground_inside.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/infra/playground_outside.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/infra/classroom.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/infra/classroom_2.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/infra/classroom_3.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/program/farm_kid2.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/program/field_trip_kid4.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/program/inside_playground_kid1.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/program/coding_kid1.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/program/english_kid1.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/program/music_kid7.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/meal/meal1.webp</image:loc></image:image>
+    <image:image><image:loc>https://www.henjell.com/media/teacher.webp</image:loc></image:image>
   </url>
 </urlset>
